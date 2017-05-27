@@ -4,8 +4,8 @@
 
 This project is made as a lightweight alternative to [screeps-profiler](https://github.com/gdborton/screeps-profiler)
 
-####Example Output:
-```javascript
+#### Example Output:
+```
 Profiler.output()
 
 Function                                  Tot Calls    CPU/Call  Calls/Tick    CPU/Tick   % of Tot
