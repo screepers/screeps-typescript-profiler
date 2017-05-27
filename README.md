@@ -39,7 +39,6 @@ DesirePathProcess:findRoad                       14      0.82ms        0.05     
 - Import `Profiler` in your `main.ts`
   ```typescript
   // main.ts
-
   import * as Profiler from "./path/to/Profiler";
   ```
 
@@ -47,7 +46,6 @@ DesirePathProcess:findRoad                       14      0.82ms        0.05     
 
   ```typescript
   // main.ts
-
   import * as Profiler from "./path/to/Profiler";
 
   global.Profiler = Profiler.init();
@@ -57,7 +55,6 @@ DesirePathProcess:findRoad                       14      0.82ms        0.05     
 
   ```typescript
   // MyClass.ts
-
   import { profile } from "./path/to/Profiler";
 
   @profile

@@ -20,3 +20,5 @@ interface Profiler {
   status(): void;
   stop(): void;
 }
+
+declare const __PROFILER_ENABLED__: boolean;
