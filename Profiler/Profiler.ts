@@ -39,6 +39,14 @@ export function init(): Profiler {
       delete Memory.profiler.start;
       return "Profiler stopped";
     },
+    
+    toString() {
+       return "Profiler.start() - Starts the profiler\n" +
+          "Profiler.stop() - Stops/Pauses the profiler\n" +
+          "Profiler.status() - Returns whether is profiler is currently running or not\n" +
+          "Profiler.output() - Pretty-prints the collected profiler data to the console\n" +
+          this.status();
+     },
   };
 
   return cli;
