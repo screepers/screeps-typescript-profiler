@@ -34,7 +34,7 @@ DesirePathProcess:findRoad                       14      0.82ms        0.05     
 
 ## Setup
 
-- Add the `Profiler` folder to your project directory somewhere. 
+- Add the `Profiler` folder to your project directory somewhere.
 
 - Import `Profiler` in your `main.ts`
   ```typescript
@@ -69,7 +69,7 @@ DesirePathProcess:findRoad                       14      0.82ms        0.05     
     public someMethod() { /* */ }
   }
   ```
-  
+
 - The script also expects a global constant `__PROFILER_ENABLED__` to be set.  This is meant to be configured by build scripts.  If this value is set to `false`, **Profiler** will be completely disabled on the build.
 
 ## Usage
@@ -89,3 +89,5 @@ From the command line:
 **`Profiler.status()`** - Returns whether is profiler is currently running or not
 
 **`Profiler.output()`** - Pretty-prints the collected profiler data to the console
+
+**`Profiler.help()`** - Lists available profiler commands

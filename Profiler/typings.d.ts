@@ -19,6 +19,7 @@ interface Profiler {
   start(): void;
   status(): void;
   stop(): void;
+  help(): void;
 }
 
 declare const __PROFILER_ENABLED__: boolean;
