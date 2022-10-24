@@ -39,14 +39,14 @@ export function init(): Profiler {
       delete Memory.profiler.start;
       return "Profiler stopped";
     },
-    
+
     toString() {
-       return "Profiler.start() - Starts the profiler\n" +
-          "Profiler.stop() - Stops/Pauses the profiler\n" +
-          "Profiler.status() - Returns whether is profiler is currently running or not\n" +
-          "Profiler.output() - Pretty-prints the collected profiler data to the console\n" +
-          this.status();
-     },
+      return "Profiler.start() - Starts the profiler\n" +
+        "Profiler.stop() - Stops/Pauses the profiler\n" +
+        "Profiler.status() - Returns whether is profiler is currently running or not\n" +
+        "Profiler.output() - Pretty-prints the collected profiler data to the console\n" +
+        this.status();
+    },
   };
 
   return cli;
@@ -105,11 +105,23 @@ export function profile(
   const ctor = target as any;
   if (!ctor.prototype) { return; }
 
+  const standardClassProps = Object.getOwnPropertyNames(class _ { });
+
+  const isOwnStaticMember = (propName: string) => (
+    !standardClassProps.includes(propName)
+  );
+
+  const staticMembers = Object.getOwnPropertyNames(ctor).filter(isOwnStaticMember);
+
   const className = ctor.name;
+
+  staticMembers.forEach((k) => {
+    wrapFunction(ctor, k, className);
+  });
+
   Reflect.ownKeys(ctor.prototype).forEach((k) => {
     wrapFunction(ctor.prototype, k, className);
   });
-
 }
 
 function isEnabled(): boolean {
@@ -141,7 +153,6 @@ function outputProfilerData() {
     totalTicks += Game.time - Memory.profiler.start;
   }
 
-  ///////
   // Process data
   let totalCpu = 0;  // running count of average total CPU use per tick
   let calls: number;
@@ -205,3 +216,4 @@ function outputProfilerData() {
 //     }
 //   });
 // }
+
